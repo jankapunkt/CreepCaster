@@ -1,21 +1,39 @@
+/**
+
+This class manages all visible objects and their interaction, rendering and so on.
+
+**/
 public class ObjManager
 {
+  //------------------------------------------------------//
+  //VARIABLES
+  
   private Vector<Movable> list; 
   private QuadTree quad;
   
   protected boolean debugQuad = false;
+  
+  //number of current collisions
   public int collitions=0;
   
+  //------------------------------------------------------//
+  //CONSTRUCTION
+  /** constructor **/
   public ObjManager()
   {
      quad = new QuadTree(0, new Rectangle(0,0,1000,600));
      list = new Vector<Movable>();
   }
   
+  //------------------------------------------------------//
+  //PUBLIC
+  
+  /** adds a movable to the list **/
   public void add(Movable m){ list.add(m); }
 
-  public void debugQuad(boolean value){ debugQuad=value; }
   
+  
+  /** renders all movables in the list **/
   public void display()
   {
       for(int i=0;i<list.size();i++)
@@ -26,17 +44,17 @@ public class ObjManager
       if(debugQuad)quad.display();
   }
   
+  
+  /** updates collision of all objects **/
   public void update(double delta)
   {
-      
       int count=0;
-      //clear quadtree
-      quad.clear();
+      quad.clear(); //clear quadtree
       for(int i=0;i<list.size();i++)
       {        
         Movable m = list.get(i);
        // m.update(delta);
-        m.follow(mousePos.set(mouseX, mouseY), delta);
+        m.follow(mousePos, delta);
         m.hit(false);
         quad.insert(m);
         count++;
@@ -86,12 +104,7 @@ public class ObjManager
       }
       collitions = count;
   }
-}
-
-
-
-protected boolean mouseClicked = false;
-void mouseClicked()
-{
-   mouseClicked = true; 
+  
+  /** sets if the quadtree is rendered **/
+  public void debugQuad(boolean value){ debugQuad=value; }
 }

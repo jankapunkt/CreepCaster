@@ -1,3 +1,7 @@
+
+boolean debQuad   = false;
+boolean isRunning = true;
+
 void keyPressed()
 {
    switch(key)
@@ -16,5 +20,17 @@ void keyPressed()
    }
 }
 
-boolean debQuad = false;
-boolean isRunning=false;
+
+protected boolean mouseClicked = false;
+
+void mouseClicked()
+{
+  spawn();
+}
+
+void spawn()
+{
+ MovableCircle m = new MovableCircle(1);
+ m.setPos(mouseX, mouseY, 0);
+ manager.add(m);
+}

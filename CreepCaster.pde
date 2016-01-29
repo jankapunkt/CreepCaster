@@ -1,29 +1,38 @@
 
 
-private ObjManager manager;
+//---------------------------------------------------------//
+// GUI
+//---------------------------------------------------------//
+public final int SCREEN_WIDTH  = 1200;
+public final int SCREEN_HEIGHT = 600;
 
-private PFont baseFont;
+public PFont baseFont;
 
-long lastLoopTime = System.nanoTime();
-long lastFpsTime=0;
-int fps = 0;
-final int TARGET_FPS = 60;
-final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;  
+//---------------------------------------------------------//
+// LOGIC
+//---------------------------------------------------------//
+public ObjManager manager;
+public final PVector mousePos = new PVector(SCREEN_WIDTH/2 , SCREEN_HEIGHT/2);
 
-final PVector mousePos = new PVector(0,0);
+//---------------------------------------------------------//
+// FPS and DELTA 
+//---------------------------------------------------------//
+public long lastLoopTime = System.nanoTime();
+public long lastFpsTime=0;
+public int fps = 0;
+public final int TARGET_FPS = 60;
+public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;  
 
-     
+
+
+//---------------------------------------------------------//
+// SETUP
+//---------------------------------------------------------//  
 void setup()
 {
-  size(1000,600,P2D);
+  size(1200,600,P2D);
   //frameRate(60);
   manager = new ObjManager();
-  for (int i=0;i<200;i++)
-  {
-     MovableCircle c = new MovableCircle(i);
-     c.setPos(random(100,900),random(100,500),0);
-     manager.add(c);
-  }
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
   textFont(baseFont);
@@ -32,10 +41,37 @@ void setup()
 }
 
 
-
+//---------------------------------------------------------//
+// DRAW / RENDER
+//---------------------------------------------------------//
 void draw()
 {
   if(!isRunning)return;
+  double delta = getDelta();
+  updates(delta);
+  render();
+  debug();
+  try{Thread.sleep( (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );}catch(Exception e){} //update 
+}
+
+
+//updates all global manager entities
+private void updates(double delta)
+{
+   manager.update(delta); 
+}
+
+//render all global manager entities
+private void render()
+{
+  background(180);
+  manager.display();
+}
+
+
+/** gets the delta value for this fps rate **/
+private double getDelta()
+{
   
   // work out how long its been since the last update, this
   // will be used to calculate how far the entities should
@@ -57,38 +93,5 @@ void draw()
      lastFpsTime = 0;
      fps = 0;
   }
-  updates(delta);
-  render();
-  mouseClicked=false;
-  debug();
-  try{Thread.sleep( (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );}catch(Exception e){}
-}
-
-private void updates(double delta)
-{
-   manager.update(delta); 
-}
-
-private void render()
-{
-  background(180);
-  
-  manager.display();
-}
-
-
-void debug()
-{
-  pushMatrix();
-    noStroke();
-    fill(60,60,60,160);
-    rect(0,0,1000,30);
-    fill(255);
-    stroke(255);
-    textSize(12);
-    text("FR "+ Float.toString(frameRate),20,20);
-    text("C " + Integer.toString(manager.collitions),120,20);
-    text("mx " + Float.toString(mouseX),180,20);
-    text("my " + Float.toString(mouseY),240,20);
-  popMatrix();
+  return delta;
 }

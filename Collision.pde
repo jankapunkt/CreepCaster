@@ -2,13 +2,17 @@ import java.util.Vector;
 import java.util.List;
 import java.util.Iterator;
 
+
+/** quadtree implementation, 
+    follows the java tree implementation
+**/
 public class QuadTree implements IDisplayable
 {
-  public int MAX_OBJECTS = 2;
+  public int MAX_OBJECTS = 2; //max objects per quad before splitting
   public boolean debug=false;
   
-  private int level;
-  private List<Movable> objects;
+  private int level;               //current level
+  private List<Movable> objects;   //all objects in the current tree node
   private Rectangle bounds;
   private QuadTree[] nodes;
  

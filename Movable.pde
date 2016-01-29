@@ -17,7 +17,7 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    public  MovableCircle(int _id)
    {
       super();
-       id = Float.toString(_id);
+      id = Float.toString(_id);
       size = (int)random(5,50);
       fill = color(255,255,255);
       type=1;
@@ -42,13 +42,12 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
       else
         fill = color(255,255,255,100);
    }
-   
+
+   /** renders this movable to the screen **/
    public void display()
    {
-      
       pushMatrix();
         translate(pos.x, pos.y);
-        //rotate(rot);
         stroke(selected ? selectedColor : 0);
         strokeWeight(1);
         fill(mouseOver ? 20 : fill);
@@ -57,14 +56,14 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    }
    
    
-   @Override
+   /** updates internal values before rendeing **/
    public void update(double delta)
    {  
       hitMouse();
-      if(selected && !mouseOver && mouseClicked && !targetReached)
-      {
-         target = new PVector(mouseX, mouseY);
-      }
+      //if(selected && !mouseOver && mouseClicked && !targetReached)
+      //{
+      //   target = new PVector(mouseX, mouseY);
+      //}
       if(target!=null)
       {
          follow(target, delta);
