@@ -35,7 +35,8 @@ public class ObjManager
       for(int i=0;i<list.size();i++)
       {        
         Movable m = list.get(i);
-        m.update(delta);
+       // m.update(delta);
+        m.follow(mousePos.set(mouseX, mouseY), delta);
         m.hit(false);
         quad.insert(m);
         count++;

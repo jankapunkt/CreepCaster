@@ -1,10 +1,4 @@
-public class Enemy extends MovableCircle
-{
-    public Enemy()
-    {
-       super((int)random(0,1000)); 
-    }
-}
+
 
 public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
 {
@@ -208,6 +202,12 @@ public class MovableLine extends Movable implements IDisplayable
 
 
 
+//===========================================================
+//
+// MOVABLE
+//
+//===========================================================
+
 
 abstract class Movable implements IDisplayable
 {
@@ -252,6 +252,7 @@ abstract class Movable implements IDisplayable
   public void rot(double r){}
   
   public void update(double delta){}
+  public void follow(PVector target, double delta){}
   
   @Override
   public boolean equals(Object o)

@@ -4,51 +4,34 @@ private ObjManager manager;
 
 private PFont baseFont;
 
+long lastLoopTime = System.nanoTime();
+long lastFpsTime=0;
+int fps = 0;
+final int TARGET_FPS = 60;
+final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;  
+
+final PVector mousePos = new PVector(0,0);
+
      
 void setup()
 {
   size(1000,600,P2D);
   //frameRate(60);
   manager = new ObjManager();
-  for (int i=0;i<1;i++)
+  for (int i=0;i<200;i++)
   {
      MovableCircle c = new MovableCircle(i);
      c.setPos(random(100,900),random(100,500),0);
      manager.add(c);
   }
-  MovableLine l = new MovableLine();
-    l.setPos(20,20,0);
-    l.setWidth(0);
-    l.setHeight(560);
-  manager.add(l);
-  MovableLine r = new MovableLine();
-    r.setPos(960,20,0);
-    r.setWidth(0);
-    r.setHeight(560);
-  manager.add(r);
-  MovableLine t = new MovableLine();
-    t.setPos(20,20,0);
-    t.setWidth(960);
-    t.setHeight(0);
-  manager.add(t);
-  MovableLine b = new MovableLine();
-    b.setPos(0,560,0);
-    b.setWidth(1000);
-    b.setHeight(0);
-  manager.add(b);
-  
-  
+
   baseFont = loadFont("CourierNewPSMT-48.vlw");
   textFont(baseFont);
   
 
 }
 
-long lastLoopTime = System.nanoTime();
-long lastFpsTime=0;
-int fps = 0;
-final int TARGET_FPS = 60;
-final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;  
+
 
 void draw()
 {
