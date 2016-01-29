@@ -10,7 +10,7 @@ void setup()
   size(1000,600,P2D);
   //frameRate(60);
   manager = new ObjManager();
-  for (int i=0;i<1;i++)
+  for (int i=0;i<200;i++)
   {
      MovableCircle c = new MovableCircle(i);
      c.setPos(random(100,900),random(100,500),0);
