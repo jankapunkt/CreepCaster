@@ -212,7 +212,7 @@ public class MovableLine extends Movable implements IDisplayable
 //===========================================================
 
 
-abstract class Movable implements IDisplayable
+abstract class Movable implements IDisplayable,IDisposable
 {
   protected PVector pos;
   protected PVector dir;
@@ -223,6 +223,8 @@ abstract class Movable implements IDisplayable
   
   public boolean mouseOver;
   public boolean isHit;
+  public boolean isDead;
+  public int index;
   public String id;
   public int type=0;
   
@@ -240,6 +242,13 @@ abstract class Movable implements IDisplayable
      pos.x = x;
      pos.y = y;
      pos.z = z;
+  }
+  
+  public void dispose()
+  {
+    pos = null;
+    dir = null;
+    vel = null;
   }
   
   public float getX(){ return pos.x; }

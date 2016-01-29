@@ -6,6 +6,7 @@
 public final int SCREEN_WIDTH  = 1200;
 public final int SCREEN_HEIGHT = 600;
 
+public PImage BACKGROUND_IMAGE;
 public PFont baseFont;
 
 //---------------------  LOGIC -------------------------//
@@ -24,10 +25,11 @@ public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 void setup()
 {
   size(1200,600,P2D);
-  //frameRate(60);
+  frameRate(60);
   manager = new ObjManager();
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
+  BACKGROUND_IMAGE = loadImage("bg_weird.png");
   textFont(baseFont);
 }
 
@@ -38,7 +40,7 @@ void draw()
   double delta = getDelta();
   manager.update(delta); 
   render();
-  debug();
+  debug(delta);
   try{Thread.sleep( (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );}catch(Exception e){} //update 
 }
 
@@ -46,7 +48,8 @@ void draw()
 //render all global manager entities
 private void render()
 {
-  background(180);
+  background(BACKGROUND_IMAGE);
+  //background(180);
   manager.display();
 }
 
@@ -62,7 +65,7 @@ private double getDelta()
   long updateLength = now - lastLoopTime;
   lastLoopTime = now;
   double delta = updateLength / (OPTIMAL_TIME);
-
+  println("dt="+delta);
   // update the frame counter
   lastFpsTime += updateLength;
   fps++;
@@ -75,5 +78,6 @@ private double getDelta()
      lastFpsTime = 0;
      fps = 0;
   }
-  return delta;
+
+  return delta>0?delta:1;
 }

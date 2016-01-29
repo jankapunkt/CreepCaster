@@ -8,7 +8,8 @@ public class ObjManager
   //------------------------------------------------------//
   //VARIABLES
   
-  private Vector<Movable> list; 
+  private List<Movable> list;
+  private List<Movable> removes;
   private QuadTree quad;
   
   protected boolean debugQuad = false;
@@ -22,16 +23,24 @@ public class ObjManager
   public ObjManager()
   {
      quad = new QuadTree(0, new Rectangle(0,0,1000,600));
-     list = new Vector<Movable>();
+     list = new ArrayList<Movable>();
+     removes = new ArrayList<Movable>();
   }
   
   //------------------------------------------------------//
   //PUBLIC
   
   /** adds a movable to the list **/
-  public void add(Movable m){ list.add(m); }
+  public void add(Movable m)
+  {
+    m.index = list.size();
+    list.add(m); 
+  }
 
-  
+  public void removeMovable(int index)
+  {
+     list.remove(index);
+  }
   
   /** renders all movables in the list **/
   public void display()
@@ -41,7 +50,8 @@ public class ObjManager
         Movable m = list.get(i);
         m.display();
       }
-      if(debugQuad)quad.display();
+      if(debugQuad)
+        quad.display();
   }
   
   
@@ -50,18 +60,27 @@ public class ObjManager
   {
       int count=0;
       quad.clear(); //clear quadtree
-      for(int i=0;i<list.size();i++)
+      removes.clear();
+      int size = list.size();
+      for(int i=size-1;i>0;i--)
       {        
         Movable m = list.get(i);
-       // m.update(delta);
-        m.follow(mousePos, delta);
-        m.hit(false);
-        quad.insert(m);
-        count++;
+        if (m.isDead)
+        {
+           m.dispose();
+           list.remove(m);
+           m=null;
+           continue;
+        }
+          m.follow(mousePos, delta);
+          m.hit(false);
+          quad.insert(m);
+          count++;
       }
 
       List<Movable> returnObjects = new ArrayList<Movable>();
-      for(int i=0;i<list.size();i++)
+      size = list.size();
+      for(int i=0;i<size;i++)
       {
         returnObjects.clear();
         Movable current = list.get(i);
@@ -84,14 +103,10 @@ public class ObjManager
             if(hit || intersection != null && intersection.length > 0)
             {
                 current.hit(hit);
-                movable.hit(hit); 
+                movable.hit(hit);
                 current.collide(movable, intersection, delta);
                 movable.collide(current, intersection, delta);
             }
-
-            
-            
-            
             if(current.mouseOver)
             {
               strokeWeight(1);
@@ -103,6 +118,7 @@ public class ObjManager
         }
       }
       collitions = count;
+
   }
   
   /** sets if the quadtree is rendered **/
