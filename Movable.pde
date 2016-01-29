@@ -12,6 +12,8 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    
    protected PVector target;
    
+   protected final float speed = 0.4;
+   
    protected color selectedColor = color(50,200,20);
    
    public  MovableCircle(int _id)
@@ -85,7 +87,7 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    public void walk(PVector dir, double delta)
    {
        dir.normalize();
-       dir.mult((float)(2*delta));
+       dir.mult((float)(speed*delta));
        pos.add(dir);
    }
    

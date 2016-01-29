@@ -3,8 +3,9 @@ import java.util.List;
 import java.util.Iterator;
 
 
-/** quadtree implementation, 
-    follows the java tree implementation
+/** 
+  quadtree implementation, 
+  follows the java tree implementation
 **/
 public class QuadTree implements IDisplayable
 {

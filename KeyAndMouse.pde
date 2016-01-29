@@ -2,6 +2,7 @@
 boolean debQuad   = false;
 boolean isRunning = true;
 
+//runs if a key was pressed
 void keyPressed()
 {
    switch(key)
@@ -23,14 +24,16 @@ void keyPressed()
 
 protected boolean mouseClicked = false;
 
+//runs if mouse was clicked
 void mouseClicked()
 {
   spawn();
 }
 
+//spawns a new circle
 void spawn()
 {
  MovableCircle m = new MovableCircle(1);
- m.setPos(mouseX, mouseY, 0);
+ m.setPos(0, random(0,SCREEN_HEIGHT), 0);
  manager.add(m);
 }

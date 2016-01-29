@@ -12,7 +12,7 @@ public PFont baseFont;
 // LOGIC
 //---------------------------------------------------------//
 public ObjManager manager;
-public final PVector mousePos = new PVector(SCREEN_WIDTH/2 , SCREEN_HEIGHT/2);
+public final PVector mousePos = new PVector(SCREEN_WIDTH , SCREEN_HEIGHT/2);
 
 //---------------------------------------------------------//
 // FPS and DELTA 
@@ -26,7 +26,7 @@ public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 
 
 //---------------------------------------------------------//
-// SETUP
+// SETUP 
 //---------------------------------------------------------//  
 void setup()
 {
