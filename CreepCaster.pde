@@ -1,22 +1,18 @@
-
-
 //---------------------------------------------------------//
-// GUI
+// MAIN DECLARATIONS, SETUP AND DRAW
 //---------------------------------------------------------//
+
+//---------------------  UI VARS -------------------------//
 public final int SCREEN_WIDTH  = 1200;
 public final int SCREEN_HEIGHT = 600;
 
 public PFont baseFont;
 
-//---------------------------------------------------------//
-// LOGIC
-//---------------------------------------------------------//
+//---------------------  LOGIC -------------------------//
 public ObjManager manager;
 public final PVector mousePos = new PVector(SCREEN_WIDTH , SCREEN_HEIGHT/2);
 
-//---------------------------------------------------------//
-// FPS and DELTA 
-//---------------------------------------------------------//
+//---------------------  FPS AND DELTA -------------------------//
 public long lastLoopTime = System.nanoTime();
 public long lastFpsTime=0;
 public int fps = 0;
@@ -25,9 +21,7 @@ public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 
 
 
-//---------------------------------------------------------//
-// SETUP 
-//---------------------------------------------------------//  
+//---------------------  SETUP -------------------------//
 void setup()
 {
   size(1200,600,P2D);
@@ -41,25 +35,17 @@ void setup()
 }
 
 
-//---------------------------------------------------------//
-// DRAW / RENDER
-//---------------------------------------------------------//
+//---------------------  RENDERING -------------------------//
 void draw()
 {
   if(!isRunning)return;
   double delta = getDelta();
-  updates(delta);
+  manager.update(delta); 
   render();
   debug();
   try{Thread.sleep( (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );}catch(Exception e){} //update 
 }
 
-
-//updates all global manager entities
-private void updates(double delta)
-{
-   manager.update(delta); 
-}
 
 //render all global manager entities
 private void render()
