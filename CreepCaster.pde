@@ -20,7 +20,6 @@ public final int TARGET_FPS = 60;
 public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;  
 
 
-
 //---------------------  SETUP -------------------------//
 void setup()
 {
@@ -30,10 +29,7 @@ void setup()
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
   textFont(baseFont);
-  
-
 }
-
 
 //---------------------  RENDERING -------------------------//
 void draw()

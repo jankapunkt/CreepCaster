@@ -1,8 +1,42 @@
+/**
+returns if a dot is within a given circle
+@param x the x pos of the dot
+@param y the y pos of the dot
+@param cx the x pos of the circle (center)
+@param cy the y pos of the circle (center)
+@param rad the radius of the circle
+@return true if within false if not
+**/
 public static boolean dotInCirc(float x, float y, float cx, float cy, float rad)
 {
     return ((x - cx) * (x - cx) + (y - cy) * (y - cy)) <= (rad*rad);
 }
 
+/**
+returns if a dot is within a given rectangle
+@param x the x pos of the dot
+@param y the y pos of the dot
+@param sqx the x pos of the rect (upper left corner)
+@param sqy the y pos of the rect (upper left corner)
+@param sqw the width of the rect
+@param sqh the height of the rect
+@return true if within false if not
+**/
+public static boolean dotInSquare(float x, float y, float sqx, float sqy, float sqw, float sqh)
+{
+   return (x > sqx && x < sqx + sqw) && (y > sqy && y < sqy + sqh);   
+}
+
+/**
+returns if a circle is fully within another circle
+@param x1 the x pos of the circle1
+@param y1 the y pos of the circle1
+@param r1 the radius of the circle1
+@param x2 the x pos of the circle2
+@param y2 the y pos of the circle2
+@param r2 the radius of the circle2
+@return true if within false if not
+**/
 public static boolean circHitCirc(float x1, float y1, float r1, float x2, float y2, float r2)
 {
     return ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)) <= ((r1+r2) * (r1+r2));
@@ -42,7 +76,7 @@ public static PVector[] circHitLine(float cx,float cy, float rad, float x1, floa
 }
 
 
-protected static int sgn(float val)
+public static int sgn(float val)
 {
    return val < 0 ? -1 : 1; 
 }
