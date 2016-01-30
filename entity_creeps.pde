@@ -3,8 +3,12 @@
 //------------------------------------------------------------------------------
 
 
-
-
+//creep       0
+//attacker    1
+//defender    2
+//healer      3
+//golem       4
+//sprinter    5
 
 /** this will  be extended by all creep character classes **/
 public class Creep extends MovableCircle
@@ -28,12 +32,14 @@ public class Creep extends MovableCircle
      
       pushMatrix();
         translate(pos.x, pos.y);
+        fill(mouseOver ? 20 : fill);
+        ellipse(0,16,size,size/2);
         if(!isDead)
-          image(_creepIm, 0,0);
+          image(_creepIm, -16,-16);
         else
         {
           tint(255,50);
-          image(_creepIm, 0,0,32+deadCount, 32+deadCount);
+          image(_creepIm, -16-deadCount/2,-16-deadCount/2,32+deadCount, 32+deadCount);
           tint(255,255);
           deadCount+=4;
         }
@@ -64,7 +70,8 @@ public class AttackerCreep extends Creep
     public AttackerCreep(int id)
     {
        super(id); 
-       atk = 100;
+       atk = 50;
+       hp  = 20;
     }
 }
 
@@ -74,7 +81,7 @@ public class DefenderCreep extends Creep
     {
        super(id);
        hp = 250;
-       atk = 8; 
+       atk = 5; 
     }
 }
 
@@ -83,6 +90,8 @@ public class HealerCreep extends Creep
     public HealerCreep(int id)
     {
        super(id); 
+       hp = 50;
+       atk = 0;
     }
 }
 
@@ -91,5 +100,21 @@ public class GolemCreep extends Creep
     public GolemCreep(int id)
     {
        super(id); 
+       setSize(64);
+       hp = 300;
+       atk= 100;
+       speed = 0.6;
+    }
+}
+
+
+public class SprinterCreep extends Creep
+{
+    public SprinterCreep(int id)
+    {
+       super(id); 
+       hp=10;
+       atk=0;
+       speed = 4;
     }
 }

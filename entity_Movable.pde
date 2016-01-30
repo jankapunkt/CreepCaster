@@ -15,7 +15,7 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    
    protected PVector target;
    
-   protected final float speed = 0.4;
+   protected float speed = 1.25;
    
    protected color selectedColor = color(50,200,20);
    

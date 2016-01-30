@@ -4,7 +4,7 @@ public void spawn_enemy()
 }
 
 double ai_step = 0;
-final int AI_MAX_STEP = 25;
+final int AI_MAX_STEP = 15;
 
 public void setupAi()
 {

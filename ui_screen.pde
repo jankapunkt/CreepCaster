@@ -9,22 +9,30 @@ public boolean displayEndScreen = false;
 public PImage AVATAR_LEFT;
 public PImage AVATAR_RIGHT;
 
-PImage red;
-PImage blue;
 
 
+public PImage basicCreepImage;
 public PImage attackerCreepImage;
 public PImage defenderCreepImage;
+public PImage golemCreepImage;
+public PImage healerCreepImage;
+public PImage sprinterCreepImage;
 
 public CastMatrix castMatrix;
 
 //init iu stuff here
 public void loadUI()
 {
-  castMatrix = new CastMatrix(SCREEN_WIDTH/2 -90 ,SCREEN_HEIGHT - 250, 40,50);
+  castMatrix = new CastMatrix(SCREEN_WIDTH/2 -90 ,SCREEN_HEIGHT - 130, 40,50);
   AVATAR_LEFT  = loadImage("shaman.png");
   AVATAR_RIGHT = loadImage("meh.png");
+  
+  basicCreepImage    = loadImage("creeps/creepDummy.png");
   attackerCreepImage = loadImage("creeps/attacker/keulen_creep_1.png");
+  defenderCreepImage = loadImage("creeps/Blue.png");
+  healerCreepImage   = loadImage("creeps/Red.png");
+  golemCreepImage    = loadImage("creeps/golem.png");
+  sprinterCreepImage = loadImage("creeps/healer/heiler_creep_grün_01.png");
 }
 
 //do all the main rendering here

@@ -36,5 +36,4 @@ public void updateAudio()
     bgAudio.play();
     bgIsPlaying = true;
   }
-  
 }
