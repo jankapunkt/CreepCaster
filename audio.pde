@@ -20,7 +20,7 @@ public boolean bgIsPlaying = false;
 
 public void setupAudio()
 {
-  bgAudio = minim.loadFile("bgDummy.mp3");
+  bgAudio = minim.loadFile("bg_fast.mp3");
   bgAudio.setGain(0.3f);
   bgAudio.loop(5);
   spawnFx = minim.loadSample("spawn.mp3");
