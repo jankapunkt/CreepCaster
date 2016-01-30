@@ -5,6 +5,11 @@ public boolean displayPauseUI = false;
 public boolean displayStartScreen = false;
 public boolean displayEndScreen = false;
 
+
+public PImage AVATAR_LEFT;
+public PImage AVATAR_RIGHT;
+
+
 //init iu stuff here
 public void loadUI()
 {

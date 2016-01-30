@@ -4,6 +4,34 @@
 // which elads to spawn a new creep
 //------------------------------------------------------------------------------
 
+class CastMatrix
+{
+  
+}
+
+class CastRect
+{
+   public boolean hit;
+   public int posx, posy, w, h;
+   
+   public CastRect(){}
+   
+   public boolean hit()
+   {
+       this.hit = dotInSquare(mouseX, mouseY, posx, posy, w, h);
+       return hit;
+   }
+   
+   public void display()
+   {
+      pushMatrix();
+        translate(posx, posy);
+        fill(255);
+        rect(0,0,w,h);
+      popMatrix();
+   }
+}
+
 
 
 //========================================================================================
