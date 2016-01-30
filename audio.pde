@@ -15,6 +15,7 @@ public final Minim minim = new Minim(this); //sound card interface
 public AudioPlayer bgAudio;
 
 public AudioSample spawnFx;
+public AudioSample deadFx;
 
 public boolean bgIsPlaying = false;
 
@@ -23,7 +24,8 @@ public void setupAudio()
   bgAudio = minim.loadFile("bg_fast.mp3");
   bgAudio.setGain(0.3f);
   bgAudio.loop(5);
-  spawnFx = minim.loadSample("spawn.mp3");
+  deadFx = minim.loadSample("warp.mp3");
+  spawnFx = minim.loadSample("dead.mp3");
 }
 
 

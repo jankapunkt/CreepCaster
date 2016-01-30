@@ -39,7 +39,9 @@ public class Creep extends MovableCircle
         }
       popMatrix();
       if(deadCount>100)
+      {
         removable=true;
+      }
    }
    
    @Override
@@ -50,6 +52,7 @@ public class Creep extends MovableCircle
          target.hp-=atk;
      if (hp <= 0){
          this.isDead = true;
+         deadFx.trigger();
      }
    }
 }

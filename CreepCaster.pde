@@ -32,7 +32,7 @@ void setup()
   manager = new ObjManager();
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
-  BACKGROUND_IMAGE = loadImage("bg_weird.png");
+  BACKGROUND_IMAGE = loadImage("bg2.png");
   
   red = loadImage("Red.png");
   blue = loadImage("Blue.png");
