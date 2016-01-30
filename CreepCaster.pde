@@ -11,7 +11,8 @@ public PFont baseFont;
 
 //---------------------  LOGIC -------------------------//
 public ObjManager manager;
-public final PVector mousePos = new PVector(SCREEN_WIDTH , SCREEN_HEIGHT/2);
+public final PVector leftGoal = new PVector(SCREEN_WIDTH , SCREEN_HEIGHT/2);
+public final PVector rightGoal = new PVector(0 , SCREEN_HEIGHT/2);
 
 //---------------------  FPS AND DELTA -------------------------//
 public long lastLoopTime = System.nanoTime();
@@ -38,6 +39,13 @@ void draw()
 {
   if(!isRunning)return;
   double delta = getDelta();
+  ai_step += delta;
+  if (ai_step >= AI_MAX_STEP)
+  {
+    spawn_enemy();
+    ai_step = 0;
+  }
+  
   manager.update(delta); 
   render();
   debug(delta);

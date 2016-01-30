@@ -22,7 +22,7 @@ public class ObjManager
   /** constructor **/
   public ObjManager()
   {
-     quad = new QuadTree(0, new Rectangle(0,0,1000,600));
+     quad = new QuadTree(0, new Rectangle(0,0,SCREEN_WIDTH,SCREEN_HEIGHT));
      list = new ArrayList<Movable>();
      removes = new ArrayList<Movable>();
   }
@@ -33,7 +33,7 @@ public class ObjManager
   /** adds a movable to the list **/
   public void add(Movable m)
   {
-    m.index = list.size();
+  //  m.index = list.size();
     list.add(m); 
   }
 
@@ -72,7 +72,10 @@ public class ObjManager
            m=null;
            continue;
         }
-          m.follow(mousePos, delta);
+          if(m.index==1)
+            m.follow(leftGoal, delta);
+          if(m.index==2)
+            m.follow(rightGoal, delta);
           m.hit(false);
           quad.insert(m);
           count++;

@@ -14,3 +14,36 @@ public class Creep extends MovableCircle
    } // empty
    
 }
+
+
+public class AttackerCreep extends Creep
+{
+    public AttackerCreep(int id)
+    {
+       super(id); 
+    }
+}
+
+public class DefenderCreep extends Creep
+{
+    public DefenderCreep(int id)
+    {
+       super(id); 
+    }
+}
+
+public class HealerCreep extends Creep
+{
+    public HealerCreep(int id)
+    {
+       super(id); 
+    }
+}
+
+public class GolemCreep extends Creep
+{
+    public GolemCreep(int id)
+    {
+       super(id); 
+    }
+}

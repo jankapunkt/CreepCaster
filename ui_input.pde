@@ -10,13 +10,14 @@ void keyPressed()
       case 'd':
         debQuad = !debQuad;
         manager.debugQuad(debQuad);
-      break;
+        break;
       case 'p':
         if (isRunning)noLoop();
         if (!isRunning)loop();
         isRunning = !isRunning;
-      break;
+        break;
       case ENTER:
+        spawn(2);
         break;
    }
 }
@@ -27,13 +28,21 @@ protected boolean mouseClicked = false;
 //runs if mouse was clicked
 void mouseClicked()
 {
-  spawn();
+  spawn(1);
 }
 
 //spawns a new circle
-void spawn()
+void spawn(int type)
 {
  MovableCircle m = new MovableCircle(1);
- m.setPos(0, random(0,SCREEN_HEIGHT), 0);
+ if(type==1)
+ {
+   m.setPos(0, random(0,SCREEN_HEIGHT), 0);
+ }
+ if(type==2)
+ {
+   m.setPos(SCREEN_WIDTH, random(0,SCREEN_HEIGHT), 0);
+ }
+ m.index = type;
  manager.add(m);
 }
