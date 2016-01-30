@@ -148,11 +148,11 @@ void spawn(int type, int creepType)
   if (type==1)
   {
     spawnFx.trigger();
-    m.setPos(0, random(0, SCREEN_HEIGHT), 0);
+    m.setPos(0, random(SCREEN_HEIGHT/3, SCREEN_HEIGHT/1.75), 0);
   }
   if (type==2)
   {
-    m.setPos(SCREEN_WIDTH, random(0, SCREEN_HEIGHT), 0);
+    m.setPos(SCREEN_WIDTH, random(SCREEN_HEIGHT/3, SCREEN_HEIGHT/1.75), 0);
   }
   m.index = type;
   manager.add(m);

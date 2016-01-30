@@ -31,6 +31,11 @@ public class Creep extends MovableCircle
    {
      
       pushMatrix();
+        if(index==1)
+          stroke(255);
+        else
+          stroke(100,220,0);
+        
         translate(pos.x, pos.y);
         fill(mouseOver ? 20 : fill);
         ellipse(0,16,size,size/2);

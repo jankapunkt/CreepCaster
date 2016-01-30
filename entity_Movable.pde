@@ -20,7 +20,6 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    protected color selectedColor = color(50,200,20);
    
 
-   
    public  MovableCircle(int _id)
    {
       super();
