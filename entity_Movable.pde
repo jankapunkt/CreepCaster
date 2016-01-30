@@ -2,8 +2,6 @@
 // Base classes for movable entities which can do moving, rendering, collision
 //------------------------------------------------------------------------------
 
-PImage red;
-PImage blue;
 
 public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
 {
@@ -226,6 +224,7 @@ abstract class Movable implements IDisplayable,IDisposable
   public boolean mouseOver;
   public boolean isHit;
   public boolean isDead;
+  
   public int index;
   public String id;
   public int type=0;

@@ -2,12 +2,19 @@
 
 public boolean displayUI = false;
 public boolean displayPauseUI = false;
-public boolean displayStartScreen = false;
+public boolean displtartScreen = false;
 public boolean displayEndScreen = false;
 
 
 public PImage AVATAR_LEFT;
 public PImage AVATAR_RIGHT;
+
+PImage red;
+PImage blue;
+
+
+public PImage attackerCreepImage;
+public PImage defenderCreepImage;
 
 public CastMatrix castMatrix;
 
@@ -15,6 +22,8 @@ public CastMatrix castMatrix;
 public void loadUI()
 {
   castMatrix = new CastMatrix(SCREEN_WIDTH/2 -90 ,SCREEN_HEIGHT - 250, 40,50);
+  AVATAR_LEFT = loadImage("shaman.png");
+  attackerCreepImage = loadImage("creeps/attacker/keulen_creep_1.png");
 }
 
 //do all the main rendering here
@@ -24,6 +33,10 @@ public void displayUI()
     fill(0,0,0,120);
     rect(0,450,1200,150);
     castMatrix.update();
+    
+    tint(255, 126);
+    image(AVATAR_LEFT, 10,SCREEN_HEIGHT-140, 128,128);
+    tint(255, 255);
 }
 
 

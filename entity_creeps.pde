@@ -2,10 +2,14 @@
 // here we will do all our creep implementations
 //------------------------------------------------------------------------------
 
+
+
+
+
 /** this will  be extended by all creep character classes **/
 public class Creep extends MovableCircle
 {
-   PImage _creepIm;
+   protected PImage _creepIm;
 
    //constructor
    public Creep(int id)
@@ -29,16 +33,16 @@ public class Creep extends MovableCircle
    
    @Override
    public void hit(Movable target){
-     if(target == null) return;
+     if (target == null) return;
    
-     if(target.index != this.index)
-         hp -= target.atk ;
-     if(hp <= 0){
+     if (target.index != this.index)
+         target.hp-=atk;
+     if (hp <= 0){
          this.isDead = true;
      }
-   
    }
 }
+
 
 
 public class AttackerCreep extends Creep
@@ -46,6 +50,7 @@ public class AttackerCreep extends Creep
     public AttackerCreep(int id)
     {
        super(id); 
+       atk = 100;
     }
 }
 
@@ -53,7 +58,9 @@ public class DefenderCreep extends Creep
 {
     public DefenderCreep(int id)
     {
-       super(id); 
+       super(id);
+       hp = 250;
+       atk = 8; 
     }
 }
 

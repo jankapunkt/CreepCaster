@@ -1,6 +1,6 @@
 public void spawn_enemy()
 {
-   spawn(2); 
+   spawn(2,-1); 
 }
 
 double ai_step = 0;

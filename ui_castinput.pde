@@ -31,11 +31,20 @@ class CastMatrix
      sequence =  new ArrayList<Integer>();
   }
   
- 
+  public void check()
+  {
+     if (!mousePressed)
+         clearSequence();
+     int toCast = CastingChecker.checkSequence(sequence);
+     if(toCast !=-1)
+     {
+       spawn(1,toCast);  
+       clearSequence();
+     }
+  }
   
   public void update()
   {
-     if(!mousePressed)clearSequence();
      for (int i=0;i<casts.length;i++)
      { 
        if(casts[i].hit()&&i!=buffer)
@@ -45,14 +54,9 @@ class CastMatrix
        }
        casts[i].display();
      }
-     if(CastingChecker.checkSequence(sequence)!=-1)
-     {
-       spawn(1);  
-       clearSequence();
-     }
-     
+     check();
    }
-  
+ 
   
 }
 
@@ -110,7 +114,12 @@ static class CastingChecker
    
    public static int checkSequence(ArrayList<Integer> input)
    {
-     
-      return input.size()>=3 ? 0 : -1;
+      int sum =0;
+      for(int i : input)
+        sum+=i;
+      if (sum==3)return 0;
+      if (sum>= 3 && sum <= 10) return 1;
+      if (sum>10)return 2;
+      return -1;
    }
 }

@@ -17,7 +17,6 @@ void keyPressed()
         isRunning = !isRunning;
         break;
       case ENTER:
-        spawn(2);
         break;
    }
 }
@@ -26,25 +25,43 @@ void keyPressed()
 protected boolean mouseClicked = false;
 
 //runs if mouse was clicked
-void mouseClicked()
-{
-}
+void mouseClicked(){}
 
 //spawns a new circle
-void spawn(int type)
+void spawn(int type, int creepType)
 {
  
- Creep m = new Creep(1);
+ Creep m;
+ if(creepType==1)
+ {
+   m = new AttackerCreep(1);
+   m.setImage(attackerCreepImage);
+ }
+ else if(creepType==2)
+ {
+   m = new DefenderCreep(1);
+    m.setImage(red);
+ }
+ else if(creepType==3)
+ {
+   m = new HealerCreep(1);
+    m.setImage(red);
+ }
+ else
+ {
+  m = new Creep(1);
+  m.setImage(attackerCreepImage);
+ }
+
 
  if(type==1)
  {
-    m.setImage(red);
    spawnFx.trigger();
    m.setPos(0, random(0,SCREEN_HEIGHT), 0);
  }
  if(type==2)
  {
-    m.setImage(blue);
+   m.setImage(blue);
    m.setPos(SCREEN_WIDTH, random(0,SCREEN_HEIGHT), 0);
  }
  m.index = type;

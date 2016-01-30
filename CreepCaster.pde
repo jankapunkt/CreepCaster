@@ -11,6 +11,7 @@ public PFont baseFont;
 
 //---------------------  LOGIC -------------------------//
 public ObjManager manager;
+
 public final PVector leftGoal = new PVector(SCREEN_WIDTH , SCREEN_HEIGHT/2);
 public final PVector rightGoal = new PVector(0 , SCREEN_HEIGHT/2);
 
@@ -23,7 +24,6 @@ public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 
 
 
-
 //---------------------  SETUP -------------------------//
 void setup()
 {
@@ -33,6 +33,7 @@ void setup()
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
   BACKGROUND_IMAGE = loadImage("bg_weird.png");
+  
   red = loadImage("Red.png");
   blue = loadImage("Blue.png");
   
