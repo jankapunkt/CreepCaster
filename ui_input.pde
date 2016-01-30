@@ -36,14 +36,16 @@ void spawn(int type)
 {
  
  Creep m = new Creep(1);
- m.setImage(creepDummy);
+
  if(type==1)
  {
+    m.setImage(red);
    spawnFx.trigger();
    m.setPos(0, random(0,SCREEN_HEIGHT), 0);
  }
  if(type==2)
  {
+    m.setImage(blue);
    m.setPos(SCREEN_WIDTH, random(0,SCREEN_HEIGHT), 0);
  }
  m.index = type;

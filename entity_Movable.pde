@@ -2,7 +2,8 @@
 // Base classes for movable entities which can do moving, rendering, collision
 //------------------------------------------------------------------------------
 
-PImage creepDummy;
+PImage red;
+PImage blue;
 
 public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
 {
@@ -20,12 +21,14 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    
    protected color selectedColor = color(50,200,20);
    
+
+   
    public  MovableCircle(int _id)
    {
       super();
       id = Float.toString(_id);
-      size = (int)random(5,50);
-      fill = color(255,255,255);
+      size = 32;
+      fill = color(0,0,0,130);
       type=1;
    }
    
@@ -40,13 +43,10 @@ public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
    public float getHeight(){ return size; }
    
    @Override
-   public void hit(boolean value)
+   public void hit(Movable target)
    {
-      isHit = value;
-      if (value == true)
-        fill = color(0,255,255,100);
-      else
-        fill = color(255,255,255,100);
+      isHit = true;
+      
    }
 
    /** renders this movable to the screen **/
@@ -230,6 +230,10 @@ abstract class Movable implements IDisplayable,IDisposable
   public String id;
   public int type=0;
   
+     //Creep stats
+   public int hp = 100;
+   public int atk = 10;
+  
   public Movable()
   {
     pos = new PVector(0.0,0.0,0.0);
@@ -261,7 +265,7 @@ abstract class Movable implements IDisplayable,IDisposable
   public float getWidth() {return 0;}
   public float getHeight(){return 0;}
   
-  public void hit(boolean value){}
+  public void hit(Movable target){}
   
   public void rot(double r){}
   

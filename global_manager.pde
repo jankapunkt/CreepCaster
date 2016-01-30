@@ -76,7 +76,7 @@ public class ObjManager
             m.follow(leftGoal, delta);
           if(m.index==2)
             m.follow(rightGoal, delta);
-          m.hit(false);
+
           quad.insert(m);
           count++;
       }
@@ -98,15 +98,11 @@ public class ObjManager
             {
                   hit = circHitCirc(current.getX(), current.getY(), current.getWidth()/2, movable.getX(), movable.getY(), movable.getWidth()/2);
             }
-            if (current.type == 2)
-            {
-                  intersection = circHitLine(movable.getX(), movable.getY(), movable.getWidth()/2, current.getX(), current.getY(), current.getX()+current.getWidth(), current.getY()+current.getHeight());
-            }
-            
+                       
             if(hit || intersection != null && intersection.length > 0)
             {
-                current.hit(hit);
-                movable.hit(hit);
+                current.hit(movable);
+                movable.hit(current);
                 current.collide(movable, intersection, delta);
                 movable.collide(current, intersection, delta);
             }

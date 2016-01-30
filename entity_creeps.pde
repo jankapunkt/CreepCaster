@@ -7,7 +7,7 @@ public class Creep extends MovableCircle
 {
    //variables, health, isdead and so on
    PImage _creepIm;
-   
+
    //constructor
    public Creep(int id)
    {
@@ -26,6 +26,18 @@ public class Creep extends MovableCircle
         translate(pos.x, pos.y);
         image(_creepIm, 0,0);
       popMatrix();
+   }
+   
+   @Override
+   public void hit(Movable target){
+     if(target == null) return;
+   
+     if(target.index != this.index)
+         hp -= target.atk ;
+     if(hp <= 0){
+       this.isDead = true;
+       }
+   
    }
 }
 

@@ -33,7 +33,8 @@ void setup()
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
   BACKGROUND_IMAGE = loadImage("bg_weird.png");
-  creepDummy = loadImage("creepDummy.png");
+  red = loadImage("Red.png");
+  blue = loadImage("Blue.png");
   
   textFont(baseFont);
   setupAi();
