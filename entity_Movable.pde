@@ -224,6 +224,7 @@ abstract class Movable implements IDisplayable,IDisposable
   public boolean mouseOver;
   public boolean isHit;
   public boolean isDead;
+  public boolean removable;
   
   public int index;
   public String id;

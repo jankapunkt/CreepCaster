@@ -22,7 +22,8 @@ public CastMatrix castMatrix;
 public void loadUI()
 {
   castMatrix = new CastMatrix(SCREEN_WIDTH/2 -90 ,SCREEN_HEIGHT - 250, 40,50);
-  AVATAR_LEFT = loadImage("shaman.png");
+  AVATAR_LEFT  = loadImage("shaman.png");
+  AVATAR_RIGHT = loadImage("meh.png");
   attackerCreepImage = loadImage("creeps/attacker/keulen_creep_1.png");
 }
 
@@ -34,8 +35,9 @@ public void displayUI()
     rect(0,450,1200,150);
     castMatrix.update();
     
-    tint(255, 126);
+    tint(255, 200);
     image(AVATAR_LEFT, 10,SCREEN_HEIGHT-140, 128,128);
+    image(AVATAR_RIGHT, SCREEN_WIDTH-138,SCREEN_HEIGHT-140, 128,128);
     tint(255, 255);
 }
 

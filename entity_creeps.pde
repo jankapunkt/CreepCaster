@@ -10,7 +10,7 @@
 public class Creep extends MovableCircle
 {
    protected PImage _creepIm;
-
+   protected int deadCount=0;
    //constructor
    public Creep(int id)
    {
@@ -25,10 +25,21 @@ public class Creep extends MovableCircle
    @Override
    public void display() //display image instead of circle
    {
+     
       pushMatrix();
         translate(pos.x, pos.y);
-        image(_creepIm, 0,0);
+        if(!isDead)
+          image(_creepIm, 0,0);
+        else
+        {
+          tint(255,50);
+          image(_creepIm, 0,0,32+deadCount, 32+deadCount);
+          tint(255,255);
+          deadCount+=4;
+        }
       popMatrix();
+      if(deadCount>100)
+        removable=true;
    }
    
    @Override

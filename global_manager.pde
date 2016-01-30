@@ -71,7 +71,7 @@ public class ObjManager
       for(int i=size-1;i>0;i--)
       {        
         Movable m = list.get(i);
-        if (m.isDead)
+        if (m.removable)
         {
            m.dispose();
            list.remove(m);
@@ -97,7 +97,8 @@ public class ObjManager
         for(int j=0;j<returnObjects.size();j++)
         {
             Movable movable = returnObjects.get(j);
-            if (current.equals(movable))continue;
+            if (current.equals(movable) || movable.isDead)
+              continue;
             boolean hit=false;
             PVector [] intersection = new PVector[0];
             if (current.type == 1)
