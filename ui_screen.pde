@@ -14,7 +14,11 @@ public void loadUI()
 //do all the main rendering here
 public void displayUI()
 {
-  
+    noStroke();
+    fill(0,0,0,120);
+    rect(0,450,1200,150);
+    
+    
 }
 
 

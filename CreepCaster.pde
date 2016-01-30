@@ -52,6 +52,7 @@ void draw()
   manager.update(delta); 
   render();
   debug(delta);
+  displayUI();
   try{Thread.sleep( (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );}catch(Exception e){} //update 
 }
 
