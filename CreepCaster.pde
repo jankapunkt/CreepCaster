@@ -2,13 +2,6 @@
 // MAIN DECLARATIONS, SETUP AND DRAW FUNCTIONS
 //---------------------------------------------------------//
 
-//---------------------  UI VARS -------------------------//
-public final int SCREEN_WIDTH  = 1200;
-public final int SCREEN_HEIGHT = 600;
-
-public PImage BACKGROUND_IMAGE;
-public PFont baseFont;
-
 //---------------------  LOGIC -------------------------//
 public ObjManager manager;
 public final PVector leftGoal = new PVector(SCREEN_WIDTH , SCREEN_HEIGHT/2);

@@ -5,7 +5,6 @@
 /** this will  be extended by all creep character classes **/
 public class Creep extends MovableCircle
 {
-   //variables, health, isdead and so on
    PImage _creepIm;
 
    //constructor
@@ -35,8 +34,8 @@ public class Creep extends MovableCircle
      if(target.index != this.index)
          hp -= target.atk ;
      if(hp <= 0){
-       this.isDead = true;
-       }
+         this.isDead = true;
+     }
    
    }
 }
