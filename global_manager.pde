@@ -1,7 +1,13 @@
+//========================================================================================
+//
+//
+//    OBJECT MANAGER
+//
+//
+//========================================================================================
+
 /**
-
 This class manages all visible objects and their interaction, rendering and so on.
-
 **/
 public class ObjManager
 {
