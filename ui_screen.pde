@@ -9,11 +9,12 @@ public boolean displayEndScreen = false;
 public PImage AVATAR_LEFT;
 public PImage AVATAR_RIGHT;
 
+public CastMatrix castMatrix;
 
 //init iu stuff here
 public void loadUI()
 {
-  
+  castMatrix = new CastMatrix(SCREEN_WIDTH/2 -90 ,SCREEN_HEIGHT - 250, 40,50);
 }
 
 //do all the main rendering here
@@ -22,8 +23,7 @@ public void displayUI()
     noStroke();
     fill(0,0,0,120);
     rect(0,450,1200,150);
-    
-    
+    castMatrix.update();
 }
 
 

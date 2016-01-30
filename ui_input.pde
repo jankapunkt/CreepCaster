@@ -28,7 +28,6 @@ protected boolean mouseClicked = false;
 //runs if mouse was clicked
 void mouseClicked()
 {
-  spawn(1);
 }
 
 //spawns a new circle
