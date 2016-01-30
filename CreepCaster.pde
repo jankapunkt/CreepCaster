@@ -1,5 +1,5 @@
 //---------------------------------------------------------//
-// MAIN DECLARATIONS, SETUP AND DRAW
+// MAIN DECLARATIONS, SETUP AND DRAW FUNCTIONS
 //---------------------------------------------------------//
 
 //---------------------  UI VARS -------------------------//
@@ -22,6 +22,8 @@ public final int TARGET_FPS = 60;
 public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;  
 
 
+
+
 //---------------------  SETUP -------------------------//
 void setup()
 {
@@ -31,7 +33,11 @@ void setup()
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
   BACKGROUND_IMAGE = loadImage("bg_weird.png");
+  creepDummy = loadImage("creepDummy.png");
+  
   textFont(baseFont);
+  setupAi();
+  setupAudio();
 }
 
 //---------------------  RENDERING -------------------------//
@@ -39,13 +45,9 @@ void draw()
 {
   if(!isRunning)return;
   double delta = getDelta();
-  ai_step += delta;
-  if (ai_step >= AI_MAX_STEP)
-  {
-    spawn_enemy();
-    ai_step = 0;
-  }
   
+  updateAi(delta);
+  updateAudio();
   manager.update(delta); 
   render();
   debug(delta);

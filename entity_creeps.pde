@@ -6,13 +6,27 @@
 public class Creep extends MovableCircle
 {
    //variables, health, isdead and so on
-  
+   PImage _creepIm;
+   
    //constructor
    public Creep(int id)
    {
      super(id);
    } // empty
    
+   public void setImage(PImage bufferedImage)
+   {
+     _creepIm = bufferedImage;  
+   }
+   
+   @Override
+   public void display() //display image instead of circle
+   {
+      pushMatrix();
+        translate(pos.x, pos.y);
+        image(_creepIm, 0,0);
+      popMatrix();
+   }
 }
 
 

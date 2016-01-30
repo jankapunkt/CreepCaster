@@ -1,13 +1,40 @@
 
+
+public boolean displayUI = false;
+public boolean displayPauseUI = false;
+public boolean displayStartScreen = false;
+public boolean displayEndScreen = false;
+
 //init iu stuff here
 public void loadUI()
 {
   
 }
 
-//do all the rendering here
+//do all the main rendering here
 public void displayUI()
 {
+  
+}
+
+
+
+//this displays the pause UI
+//e.g. a settings menu
+public void displayPauseUI()
+{
+  
+}
+
+
+public void displayStartScreen()
+{
+  
+}
+
+public void displayEndScreen()
+{
+  
   
 }
 

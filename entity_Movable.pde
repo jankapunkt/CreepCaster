@@ -2,6 +2,8 @@
 // Base classes for movable entities which can do moving, rendering, collision
 //------------------------------------------------------------------------------
 
+PImage creepDummy;
+
 public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
 {
    protected float size;

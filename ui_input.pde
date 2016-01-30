@@ -34,9 +34,12 @@ void mouseClicked()
 //spawns a new circle
 void spawn(int type)
 {
- MovableCircle m = new MovableCircle(1);
+ 
+ Creep m = new Creep(1);
+ m.setImage(creepDummy);
  if(type==1)
  {
+   spawnFx.trigger();
    m.setPos(0, random(0,SCREEN_HEIGHT), 0);
  }
  if(type==2)
