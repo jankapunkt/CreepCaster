@@ -6,6 +6,53 @@
 
 class CastMatrix
 {
+  public int posx, posy;
+  public CastRect[] casts;
+  private int buffer = -1;
+  private ArrayList<Integer> sequence;
+  
+  public CastMatrix(int posx, int posy, int space, int size)
+  {
+    clearSequence();
+    casts = new CastRect[9];
+    for (int i=0;i<3;i++)
+        casts[i] = new CastRect(posx + (i*2*space), posy, size);
+
+    for (int i=3;i<6;i++)
+        casts[i] = new CastRect(posx + ((i-3)*2*space), posy+ 2*space, size);
+
+    for (int i=6;i<9;i++)
+        casts[i] = new CastRect(posx + ((i-6)*2*space), posy + 4*space, size);
+    
+  }
+  
+  public void clearSequence()
+  {
+     sequence =  new ArrayList<Integer>();
+  }
+  
+ 
+  
+  public void update()
+  {
+     if(!mousePressed)clearSequence();
+     for (int i=0;i<casts.length;i++)
+     { 
+       if(casts[i].hit()&&i!=buffer)
+       {
+           buffer = i;
+           sequence.add(i);
+       }
+       casts[i].display();
+     }
+     if(CastingChecker.checkSequence(sequence)!=-1)
+     {
+       spawn(1);  
+       clearSequence();
+     }
+     
+   }
+  
   
 }
 
@@ -14,11 +61,16 @@ class CastRect
    public boolean hit;
    public int posx, posy, w, h;
    
-   public CastRect(){}
+   public CastRect(int posx, int posy, int size)
+   {
+     this.posx = posx;
+     this.posy = posy;
+     this.w = this.h = size;
+   }
    
    public boolean hit()
    {
-       this.hit = dotInSquare(mouseX, mouseY, posx, posy, w, h);
+       this.hit = mousePressed &&  dotInSquare(mouseX, mouseY, posx, posy, w, h);
        return hit;
    }
    
@@ -26,7 +78,10 @@ class CastRect
    {
       pushMatrix();
         translate(posx, posy);
-        fill(255);
+        if(hit)
+          fill(255,0,0,150);
+        else
+          fill(255,255,255,150);
         rect(0,0,w,h);
       popMatrix();
    }
@@ -53,14 +108,9 @@ static class CastingChecker
    public static final int ATTACKER = 2;
 
    
-   public static int checkSequence(int[] input)
+   public static int checkSequence(ArrayList<Integer> input)
    {
-      if (Arrays.equals(input, seq_healer))
-        return 0;
-      if (Arrays.equals(input, seq_defender))
-        return 1;
-      if (Arrays.equals(input, seq_attacker))
-        return 2;
-      return -1;
+     
+      return input.size()>=3 ? 0 : -1;
    }
 }
