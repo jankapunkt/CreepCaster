@@ -46,7 +46,8 @@ void setup()
 //---------------------  RENDERING -------------------------//
 void draw()
 {
-  if(!isRunning)return;
+  if(!isRunning)
+    return;
   double delta = getDelta();
   
   updateAi(delta);
