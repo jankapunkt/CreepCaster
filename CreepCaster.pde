@@ -20,7 +20,7 @@ public long lastLoopTime = System.nanoTime();
 public long lastFpsTime=0;
 public int fps = 0;
 public final int TARGET_FPS = 60;
-public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;  
+public final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 
 
 
@@ -50,6 +50,9 @@ void draw()
   updateAi(delta);
   updateAudio();
   manager.update(delta); 
+  
+
+  
   render();
   debug(delta);
   displayUI();
@@ -61,7 +64,7 @@ void draw()
 private void render()
 {
   background(BACKGROUND_IMAGE);
-  //background(180);
+  renderGoals();
   manager.display();
 }
 

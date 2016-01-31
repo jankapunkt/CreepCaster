@@ -9,7 +9,7 @@ public boolean displayEndScreen = false;
 public PImage AVATAR_LEFT;
 public PImage AVATAR_RIGHT;
 
-
+public float levelTime = 0;
 
 public PImage basicCreepImage;
 public PImage attackerCreepImage;
@@ -17,6 +17,7 @@ public PImage defenderCreepImage;
 public PImage golemCreepImage;
 public PImage healerCreepImage;
 public PImage sprinterCreepImage;
+
 
 public CastMatrix castMatrix;
 
@@ -35,20 +36,45 @@ public void loadUI()
   sprinterCreepImage = loadImage("creeps/healer/heiler_creep_grün_01.png");
 }
 
+
 //do all the main rendering here
 public void displayUI()
 {
+    //casting matrix
     noStroke();
     fill(0,0,0,120);
     rect(0,450,1200,150);
     castMatrix.update();
     
+    levelTime = System.nanoTime() / 10000;
+    stroke(255);
+    textSize(12);
+    text("t="+Float.toString(levelTime),200,SCREEN_WIDTH-100);
+    
+    //avatars
     tint(255, 200);
     image(AVATAR_LEFT, 10,SCREEN_HEIGHT-140, 128,128);
     image(AVATAR_RIGHT, SCREEN_WIDTH-138,SCREEN_HEIGHT-140, 128,128);
     tint(255, 255);
+    
+    
 }
 
+
+public void renderGoals()
+{
+    noStroke();
+   pushMatrix();
+     translate(leftGoal.x, leftGoal.y);
+     fill(255,255,255,160);
+     ellipse(0,0,80,60);
+   popMatrix();
+   pushMatrix();
+     translate(rightGoal.x, rightGoal.y);
+     fill(100,200,0,160);
+     ellipse(0,0,80,60);
+   popMatrix();
+}
 
 
 //this displays the pause UI
