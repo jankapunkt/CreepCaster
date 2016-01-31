@@ -101,23 +101,22 @@ public class ObjManager
               continue;
             boolean hit=false;
             PVector [] intersection = new PVector[0];
-            if (current.type == 1)
-            {
-                  hit = circHitCirc(current.getX(), current.getY(), current.getWidth()/2, movable.getX(), movable.getY(), movable.getWidth()/2);
-            }
-                       
+            
+            hit = circHitCirc(current.getX(), current.getY(), current.getWidth()/2, movable.getX(), movable.getY(), movable.getWidth()/2);           
             if(hit || intersection != null && intersection.length > 0)
             {
-                current.hit(movable);
-                movable.hit(current);
-                current.collide(movable, intersection, delta);
-                movable.collide(current, intersection, delta);
-            }
-            if(current.mouseOver)
-            {
-              strokeWeight(1);
-              stroke(0,255,0);
-              line(current.getX(), current.getY(),movable.getX(), movable.getY());  
+                if ((current.index == 2 && movable.type == -2) || (current.type == -2 && movable.index == 2)) 
+                {
+                     ai_points++;
+                }else if ((current.index == 1 && movable.type == -1)|| (current.type == -1 && movable.index == 1)) 
+                {
+                     player_points++;
+                }else{
+                    current.hit(movable);
+                    movable.hit(current);
+                    current.collide(movable, intersection, delta);
+                    movable.collide(current, intersection, delta);
+                }
             }
               
         count++;    

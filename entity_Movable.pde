@@ -3,6 +3,19 @@
 //------------------------------------------------------------------------------
 
 
+public class Goal extends MovableCircle
+{
+   public Goal(int id)
+   {
+    super(id); 
+   }
+   
+   @Override
+   public void collide(Movable target, PVector[] intersection, double delta)
+   {}
+   
+}
+
 public class MovableCircle extends Movable //CIRCLE IS BOUNDING BOX
 {
    protected float size;

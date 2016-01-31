@@ -56,8 +56,13 @@ public void displayUI()
     image(AVATAR_LEFT, 10,SCREEN_HEIGHT-140, 128,128);
     image(AVATAR_RIGHT, SCREEN_WIDTH-138,SCREEN_HEIGHT-140, 128,128);
     tint(255, 255);
-    
-    
+    pushMatrix();
+    stroke(255);
+    fill(255);
+    textSize(60);
+    text("you "+ Integer.toString(player_points),200,SCREEN_HEIGHT-100);
+    text("meh "+ Integer.toString(ai_points),SCREEN_WIDTH-400,SCREEN_HEIGHT-100);
+    popMatrix();
 }
 
 

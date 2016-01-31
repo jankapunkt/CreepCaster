@@ -33,9 +33,9 @@ void setup()
 
   baseFont = loadFont("CourierNewPSMT-48.vlw");
   BACKGROUND_IMAGE = loadImage("bg2.png");
-  
+  setupGoals();
   textFont(baseFont);
-  setupAi();
+  
   setupAudio();
   loadUI();
 }
@@ -60,11 +60,23 @@ void draw()
 }
 
 
+public void setupGoals()
+{
+   Goal leftg = new Goal(0);
+   Goal rightg = new Goal(0);
+   leftg.setPos(leftGoal.x,leftGoal.y,0);
+   leftg.type = -1;
+   rightg.type = -2;
+   rightg.setPos(rightGoal.x,rightGoal.y,0);
+   manager.add(leftg);
+   manager.add(rightg);
+}
+
 //render all global manager entities
 private void render()
 {
   background(BACKGROUND_IMAGE);
-  renderGoals();
+  //renderGoals();
   manager.display();
 }
 
