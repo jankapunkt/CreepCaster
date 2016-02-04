@@ -5,4 +5,4 @@ Binaries for Windows and Linux can be found at the game's page at the global gam
 
 http://globalgamejam.org/2016/games/creep-caster
 
-The code and the assets as well as the game are licenced under Creative Commons - CC BY-NC-SA 3.0 (See licence for further information)
+The code and the assets as well as the game are licenced under Creative Commons - CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/, See licence for further information)
