@@ -3,6 +3,9 @@ A ritual creep casting game for the GlobalGameJam 2016. Cast as many creeps as y
 
 Game site (including binaries): http://globalgamejam.org/2016/games/creep-caster
 
+![Creep Caster screenshot](/CreepCaster_Screenshot.PNG?raw=true "Creep Caster screenshot")
+
+
 The code and the assets as well as the game are licenced under Creative Commons - CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/, See licence for further information)
 
 ### Installation
