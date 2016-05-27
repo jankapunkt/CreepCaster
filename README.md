@@ -1,4 +1,7 @@
+Note: For any issues, contact me via [info@jankuester.com](mailto:info@jankuester.com)
+
 # CreepCaster
+
 A ritual creep casting game for the GlobalGameJam 2016. Cast as many creeps as you can to point out your competitor!
 
 Game site (including binaries): http://globalgamejam.org/2016/games/creep-caster
